@@ -1,0 +1,23 @@
+path: prepared_dataset  # dataset root dir
+train: train  # train images
+val: val  # val images
+test: test # test images
+
+# Classes
+names:
+  0: aerosol_cans
+  1: aluminum_food_cans
+  2: aluminum_soda_cans
+  3: cardboard_boxes
+  4: cardboard_packaging
+  5: clothing
+  6: coffee_grounds
+  7: disposable_plastic_cutlery
+  8: eggshells
+  9: food_waste
+  10: glass_beverage_bottles
+  11: glass_cosmetic_containers
+  12: glass_food_jars
+  13: magazines
+  14: newspaper
+  15: office_paper

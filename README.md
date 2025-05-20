@@ -7,6 +7,32 @@
 This project aims to build an intelligent machine learning model to classify waste into seven categories — Cardboard, E-Waste, Glass, Medical, Metal, Paper, and Plastic — by analyzing images of waste materials.
 The goal is to implement this system into Material Recovery Facilities (MRFs) to replace manual waste sorting with an automated real-time classification system working over a conveyor belt.
 
+## Installation
+
+1. Clone this repository
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Usage
+
+### Training the Model
+
+To train the model on your dataset:
+```bash
+python train.py
+```
+
+### Running the Web Application
+
+To start the Streamlit web interface:
+```bash
+streamlit run app.py
+```
+
+The web interface allows you to upload images and get real-time predictions for waste classification.
+
 ---
 
 ## Modules
