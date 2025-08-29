@@ -2,14 +2,18 @@ import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Key, ExternalLink } from 'lucide-react';
 
+type ApiKeyModalMode = 'required' | 'change';
+
 interface ApiKeyModalProps {
+  mode?: ApiKeyModalMode;
   onSubmit: (apiKey: string) => void;
   onCancel: () => void;
 }
 
-export default function ApiKeyModal({ onSubmit, onCancel }: ApiKeyModalProps) {
+export default function ApiKeyModal({ mode = 'required', onSubmit, onCancel }: ApiKeyModalProps) {
   const [apiKey, setApiKey] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const isChangeMode = mode === 'change';
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -45,11 +49,15 @@ export default function ApiKeyModal({ onSubmit, onCancel }: ApiKeyModalProps) {
           <div className="p-2 rounded-lg bg-green-500/10 border border-green-500/20">
             <Key className="w-5 h-5 text-green-400" />
           </div>
-          <h3 className="text-xl font-bold text-white">Gemini API Key Required</h3>
+          <h3 className="text-xl font-bold text-white">
+            {isChangeMode ? 'Change Gemini API Key' : 'Gemini API Key Required'}
+          </h3>
         </div>
 
         <p className="text-gray-400 text-sm mb-6">
-          Enter your Google Gemini API key to analyze the uploaded image. Your key is stored locally in your browser and sent directly to Google Gemini for classification.
+          {isChangeMode
+            ? 'Enter a new Gemini API key to replace the one saved in your browser. The new key will be used for all future analyses.'
+            : 'Enter your Google Gemini API key to analyze the uploaded image. Your key is stored locally in your browser and sent directly to Google Gemini for classification.'}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -96,7 +104,7 @@ export default function ApiKeyModal({ onSubmit, onCancel }: ApiKeyModalProps) {
               type="submit"
               className="flex-1 py-3 px-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 rounded-xl text-white font-medium transition-all shadow-lg shadow-green-500/20"
             >
-              Start Analysis
+              {isChangeMode ? 'Save New Key' : 'Start Analysis'}
             </button>
           </div>
         </form>
