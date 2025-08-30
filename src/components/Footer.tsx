@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
         </div>
         <p className="text-center text-sm text-slate-400 mt-6">
-           All rights reserved. ©
+          © {new Date().getFullYear()} Abdul Ateeb and Syeeda Zoya Tabassum · MIT licensed
         </p>
       </div>
     </footer>
